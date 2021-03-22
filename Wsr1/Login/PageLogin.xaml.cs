@@ -35,12 +35,12 @@ namespace Wsr1.Login
                     x => x.Email == tbLogin.Text && x.Password == pbPassword.Password);
                 if(Info != null)
                 {
-                    //Activity userTimeInfo = new Activity()
-                    //{
-                    //    UserID = Info.ID,
-                    //   Date = DateTime.Today,
-                    //    TimeLogin = TimeSpan.now,
-                    //};
+                    Activity userTimeInfo = new Activity()
+                    {
+                        UserID = Info.ID,
+                        Date = DateTime.Today,
+                        TimeLogin = DateTime.Now.ToLongTimeString()
+                    };
                     switch (Info.RoleID)
                     {
                         case 1:

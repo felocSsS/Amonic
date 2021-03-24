@@ -29,3 +29,5 @@ D:\Programming\Wsr1\Wsr1\obj\Debug\Adnin\PageAdmin.g.cs
 D:\Programming\Wsr1\Wsr1\obj\Debug\Adnin\PageAdmin.baml
 D:\Programming\Wsr1\Wsr1\obj\Debug\User\PageUser.g.cs
 D:\Programming\Wsr1\Wsr1\obj\Debug\User\PageUser.baml
+D:\Programming\Wsr1\Wsr1\obj\Debug\Windows\WindowAddUser.g.cs
+D:\Programming\Wsr1\Wsr1\obj\Debug\Windows\WindowAddUser.baml

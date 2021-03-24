@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wsr1.Windows;
+using Wsr1.BD;
 
 namespace Wsr1
 {
@@ -24,21 +26,23 @@ namespace Wsr1
         {
             InitializeComponent();
             AdminDataGrid.ItemsSource = BD.DB.database.Users.ToList();
+            cmbOffice.DisplayMemberPath = "Title";
+            cmbOffice.ItemsSource = DB.database.Offices.ToList();
         }
 
-        private void cmbOffice_DropDownOpened(object sender, EventArgs e)
+        private void BtnAddUser_Click(object sender, RoutedEventArgs e)
         {
-            cmbOffice.Items.Clear();
-            var Oficces = BD.DB.database.Offices.ToList();
-            foreach(BD.Offices office in Oficces)
-            {
-                cmbOffice.Items.Add(office.Title);
-            }
+            WindowAddUser addUser = new WindowAddUser();
+            addUser.Show();
         }
 
-        private void cmbOffice_DropDownClosed(object sender, EventArgs e)
+        private void cmbOffice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             AdminDataGrid.ItemsSource = BD.DB.database.Users.Where(x => x.Offices.Title == cmbOffice.Text).ToList();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

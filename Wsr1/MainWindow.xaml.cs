@@ -29,5 +29,15 @@ namespace Wsr1
             FrmMain.Navigate(new PageLogin());
             DB.database = new felcosWsr1Entities();
         }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

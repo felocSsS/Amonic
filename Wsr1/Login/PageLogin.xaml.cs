@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wsr1.BD;
 using Wsr1.User;
+using Wsr1.Classes;
 
 namespace Wsr1.Login
 {
@@ -39,8 +40,12 @@ namespace Wsr1.Login
                     {
                         UserID = Info.ID,
                         Date = DateTime.Today,
-                        TimeLogin = DateTime.Now.ToLongTimeString()
+                        TimeLogin = DateTime.Now.TimeOfDay,
                     };
+                    DB.database.Activity.Add(userTimeInfo);
+                    DB.database.SaveChanges();
+                    UserHelpClass.ID = Info.ID;
+                    UserHelpClass.sessionID = userTimeInfo.SessionID;
                     switch (Info.RoleID)
                     {
                         case 1:
@@ -51,11 +56,14 @@ namespace Wsr1.Login
                             break;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Такой пользователь не найден", "Ошибка", MessageBoxButton.OK);
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.ToString());
             }
         }
 

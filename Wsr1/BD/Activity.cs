@@ -21,6 +21,8 @@ namespace Wsr1.BD
         public Nullable<System.TimeSpan> TimeLogin { get; set; }
         public Nullable<System.TimeSpan> TotalTimeInSystem { get; set; }
         public string FeedBack { get; set; }
+        public Nullable<System.TimeSpan> TimeSpentInOneSession { get; set; }
+        public Nullable<int> NumberOfCrushes { get; set; }
     
         public virtual Users Users { get; set; }
     }

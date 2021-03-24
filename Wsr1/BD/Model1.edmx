@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище felcosWsr1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище felcosWsr1Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="SessionID" />
@@ -16,6 +16,8 @@
           <Property Name="TimeLogin" Type="time" Precision="7" />
           <Property Name="TotalTimeInSystem" Type="time" Precision="7" />
           <Property Name="FeedBack" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeSpentInOneSession" Type="time" Precision="7" />
+          <Property Name="NumberOfCrushes" Type="int" />
         </EntityType>
         <EntityType Name="Countries">
           <Key>
@@ -38,7 +40,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -55,12 +57,12 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="RoleID" Type="int" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
           <Property Name="OfficeID" Type="int" />
           <Property Name="Birthdate" Type="date" />
           <Property Name="Active" Type="bit" />
@@ -102,7 +104,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Users_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -137,10 +139,26 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="felcosWsr1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="SessionID" />
+          </Key>
+          <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="TimeLogout" Type="Time" Precision="7" />
+          <Property Name="TimeLogin" Type="Time" Precision="7" />
+          <Property Name="TotalTimeInSystem" Type="Time" Precision="7" />
+          <Property Name="FeedBack" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeSpentInOneSession" Type="Time" Precision="7" />
+          <Property Name="NumberOfCrushes" Type="Int32" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Activity_Users" FromRole="Activity" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Countries">
           <Key>
             <PropertyRef Name="ID" />
@@ -165,7 +183,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
         </EntityType>
@@ -183,19 +201,31 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OfficeID" Type="Int32" />
           <Property Name="Birthdate" Type="DateTime" Precision="0" />
           <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Users" FromRole="Users" ToRole="Activity" />
           <NavigationProperty Name="Offices" Relationship="Self.FK_Users_Offices" FromRole="Users" ToRole="Offices" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
-          <NavigationProperty Name="Activity" Relationship="felcosWsr1Model.FK_Activity_Users" FromRole="Users" ToRole="Activity" />
         </EntityType>
+        <Association Name="FK_Activity_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Office_Country">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
           <End Role="Offices" Type="Self.Offices" Multiplicity="*" />
@@ -221,7 +251,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Users_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -232,12 +262,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="felcosWsr1Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="felcosWsr1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="Countries" EntityType="Self.Countries" />
           <EntitySet Name="Offices" EntityType="Self.Offices" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Activity_Users" Association="Self.FK_Activity_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
           <AssociationSet Name="FK_Office_Country" Association="Self.FK_Office_Country">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Offices" EntitySet="Offices" />
@@ -250,43 +285,28 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="Activity" EntityType="felcosWsr1Model.Activity" />
-          <AssociationSet Name="FK_Activity_Users" Association="felcosWsr1Model.FK_Activity_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Activity">
-          <Key>
-            <PropertyRef Name="SessionID" />
-          </Key>
-          <Property Name="SessionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="TimeLogout" Type="Time" Precision="7" />
-          <Property Name="TimeLogin" Type="Time" Precision="7" />
-          <Property Name="TotalTimeInSystem" Type="Time" Precision="7" />
-          <Property Name="FeedBack" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Users" Relationship="felcosWsr1Model.FK_Activity_Users" FromRole="Activity" ToRole="Users" />
-        </EntityType>
-        <Association Name="FK_Activity_Users">
-          <End Type="felcosWsr1Model.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="felcosWsr1Model.Activity" Role="Activity" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище felcosWsr1ModelContainer" CdmEntityContainer="felcosWsr1Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище felcosWsr1ModelContainer" CdmEntityContainer="felcosWsr1Entities1">
+          <EntitySetMapping Name="Activity">
+            <EntityTypeMapping TypeName="felcosWsr1Model.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TimeLogout" ColumnName="TimeLogout" />
+                <ScalarProperty Name="TimeLogin" ColumnName="TimeLogin" />
+                <ScalarProperty Name="TotalTimeInSystem" ColumnName="TotalTimeInSystem" />
+                <ScalarProperty Name="FeedBack" ColumnName="FeedBack" />
+                <ScalarProperty Name="TimeSpentInOneSession" ColumnName="TimeSpentInOneSession" />
+                <ScalarProperty Name="NumberOfCrushes" ColumnName="NumberOfCrushes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="felcosWsr1Model.Countries">
               <MappingFragment StoreEntitySet="Countries">
@@ -337,19 +357,6 @@
                 <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
                 <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Activity">
-            <EntityTypeMapping TypeName="felcosWsr1Model.Activity">
-              <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="FeedBack" ColumnName="FeedBack" />
-                <ScalarProperty Name="TotalTimeInSystem" ColumnName="TotalTimeInSystem" />
-                <ScalarProperty Name="TimeLogin" ColumnName="TimeLogin" />
-                <ScalarProperty Name="TimeLogout" ColumnName="TimeLogout" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

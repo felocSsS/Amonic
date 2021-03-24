@@ -27,7 +27,7 @@ namespace Wsr1
             InitializeComponent();
             SupClass.frm = FrmMain;
             FrmMain.Navigate(new PageLogin());
-            DB.database = new felcosWsr1Entities();
+            DB.database = new felcosWsr1Entities1();
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

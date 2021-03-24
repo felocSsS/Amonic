@@ -1,6 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище felcosWsr1ModelContainer" CdmEntityContainer="felcosWsr1Entities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище felcosWsr1ModelContainer" CdmEntityContainer="felcosWsr1Entities1">
+    <EntitySetMapping Name="Activity">
+      <EntityTypeMapping TypeName="felcosWsr1Model.Activity">
+        <MappingFragment StoreEntitySet="Activity">
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TimeLogout" ColumnName="TimeLogout" />
+          <ScalarProperty Name="TimeLogin" ColumnName="TimeLogin" />
+          <ScalarProperty Name="TotalTimeInSystem" ColumnName="TotalTimeInSystem" />
+          <ScalarProperty Name="FeedBack" ColumnName="FeedBack" />
+          <ScalarProperty Name="TimeSpentInOneSession" ColumnName="TimeSpentInOneSession" />
+          <ScalarProperty Name="NumberOfCrushes" ColumnName="NumberOfCrushes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Countries">
       <EntityTypeMapping TypeName="felcosWsr1Model.Countries">
         <MappingFragment StoreEntitySet="Countries">
@@ -51,19 +66,6 @@
           <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
           <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
           <ScalarProperty Name="Active" ColumnName="Active" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Activity">
-      <EntityTypeMapping TypeName="felcosWsr1Model.Activity">
-        <MappingFragment StoreEntitySet="Activity">
-          <ScalarProperty Name="FeedBack" ColumnName="FeedBack" />
-          <ScalarProperty Name="TotalTimeInSystem" ColumnName="TotalTimeInSystem" />
-          <ScalarProperty Name="TimeLogin" ColumnName="TimeLogin" />
-          <ScalarProperty Name="TimeLogout" ColumnName="TimeLogout" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

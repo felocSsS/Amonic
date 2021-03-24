@@ -11,6 +11,8 @@
     <Property Name="TimeLogin" Type="time" Precision="7" />
     <Property Name="TotalTimeInSystem" Type="time" Precision="7" />
     <Property Name="FeedBack" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeSpentInOneSession" Type="time" Precision="7" />
+    <Property Name="NumberOfCrushes" Type="int" />
   </EntityType>
   <EntityType Name="Countries">
     <Key>
@@ -33,7 +35,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -50,12 +52,12 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="RoleID" Type="int" Nullable="false" />
-    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
     <Property Name="OfficeID" Type="int" />
     <Property Name="Birthdate" Type="date" />
     <Property Name="Active" Type="bit" />
@@ -97,7 +99,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Users_Roles">
-    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
     <End Role="Users" Type="Self.Users" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Roles">

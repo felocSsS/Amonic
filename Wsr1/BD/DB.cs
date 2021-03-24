@@ -8,6 +8,6 @@ namespace Wsr1.BD
 {
     class DB
     {
-        public static felcosWsr1Entities database;
+        public static felcosWsr1Entities1 database;
     }
 }

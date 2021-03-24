@@ -46,13 +46,15 @@ namespace Wsr1.Windows
                 Email = tbEmail.Text,
                 FirstName = tbFirstName.Text,
                 LastName = tbLastName.Text,
-                /*OfficeID = Convert.ToInt32(CmbOffice.SelectedItem),
-                Birthdate = DateTime.Today,*/
+                OfficeID = (int)CmbOffice.SelectedValue,
+                Birthdate = Convert.ToDateTime(tbBirthdate.Text),
                 Password = tbPassword.Text,
                 RoleID = 2
             };
             DB.database.Users.Add(newUser);
             DB.database.SaveChanges();
+            MessageBox.Show("Успех", "Пользователь зарегестрирован", MessageBoxButton.OK);
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

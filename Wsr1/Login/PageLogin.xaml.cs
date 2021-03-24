@@ -44,8 +44,7 @@ namespace Wsr1.Login
                     };
                     DB.database.Activity.Add(userTimeInfo);
                     DB.database.SaveChanges();
-                    UserHelpClass.ID = Info.ID;
-                    UserHelpClass.sessionID = userTimeInfo.SessionID;
+                    UserHelpClass.user = Info;
                     switch (Info.RoleID)
                     {
                         case 1:

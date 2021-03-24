@@ -27,7 +27,8 @@
                     VerticalAlignment="Top">
             <TextBlock Text="тут будет текст"
                        Margin="130 0 0 0"
-                       FontSize="16"/>
+                       FontSize="16"
+                       Name="tbName"/>
         </StackPanel>
         <Grid Grid.Row="1"
               Height="40"
@@ -46,11 +47,13 @@
             <TextBlock Grid.Column="2"
                        FontSize="15"
                        Text="Тут будет время"
-                       VerticalAlignment="Center"/>
+                       VerticalAlignment="Center"
+                       Name="tbSpentTime"/>
             <TextBlock Grid.Column="3"
                        FontSize="15"
                        VerticalAlignment="Center"
-                       Text="Number of crashes:"/>
+                       Text="Number of crashes:"
+                       Name="tbCrush"/>
             <TextBlock Grid.Column="4"
                        FontSize="15"
                        VerticalAlignment="Center"
@@ -64,15 +67,20 @@
                   Name="UserDataGrid"> 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" 
-                                    Width="1*"/>
+                                    Width="1*"
+                                    Binding="{Binding Date}"/>
                 <DataGridTextColumn Header="Login Time" 
-                                    Width="1*"/>
+                                    Width="1*"
+                                    Binding="{Binding TimeLogin}"/>
                 <DataGridTextColumn Header="Logout Time" 
-                                    Width="1*"/>
+                                    Width="1*"
+                                    Binding="{Binding TimeLogout}"/>
                 <DataGridTextColumn Header="Time spent on system" 
-                                    Width="1.5*"/>
+                                    Width="1.5*"
+                                    Binding="{Binding TimeSpentInOneSession}"/>
                 <DataGridTextColumn Header="Unsuccessful logout reason" 
-                                    Width="1.5*"/>
+                                    Width="1.5*"
+                                    Binding="{Binding FeedBack}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

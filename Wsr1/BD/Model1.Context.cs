@@ -13,10 +13,10 @@ namespace Wsr1.BD
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class felcosWsr1Entities : DbContext
+    public partial class felcosWsr1Entities1 : DbContext
     {
-        public felcosWsr1Entities()
-            : base("name=felcosWsr1Entities")
+        public felcosWsr1Entities1()
+            : base("name=felcosWsr1Entities1")
         {
         }
     
@@ -25,11 +25,11 @@ namespace Wsr1.BD
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Activity> Activity { get; set; }
         public virtual DbSet<Countries> Countries { get; set; }
         public virtual DbSet<Offices> Offices { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Activity> Activity { get; set; }
     }
 }

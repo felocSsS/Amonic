@@ -31,3 +31,5 @@ D:\Programming\Wsr1\Wsr1\obj\Debug\User\PageUser.g.cs
 D:\Programming\Wsr1\Wsr1\obj\Debug\User\PageUser.baml
 D:\Programming\Wsr1\Wsr1\obj\Debug\Windows\WindowAddUser.g.cs
 D:\Programming\Wsr1\Wsr1\obj\Debug\Windows\WindowAddUser.baml
+D:\Programming\Wsr1\Wsr1\obj\Debug\Windows\WindowsEditUser.g.cs
+D:\Programming\Wsr1\Wsr1\obj\Debug\Windows\WindowsEditUser.baml

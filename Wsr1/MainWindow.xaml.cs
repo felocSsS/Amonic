@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wsr1.BD;
+using Wsr1.Classes;
 using Wsr1.Login;
 
 namespace Wsr1
@@ -32,7 +33,18 @@ namespace Wsr1
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            var Info = DB.database.Activity.FirstOrDefault(
+                        x => x.SessionID == UserHelpClass.sessionID);
+            Info.FeedBack = "kek";
+            try
+            {
+                DB.database.SaveChanges();
+                MessageBox.Show("Успех");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)

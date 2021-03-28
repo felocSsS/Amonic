@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wsr1.Windows;
 using Wsr1.BD;
+using System.Data;
 
 namespace Wsr1
 {
@@ -43,6 +44,19 @@ namespace Wsr1
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        private void AdminDataGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            WindowAddUser addUser = new WindowAddUser();
+            addUser.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int _row;
+            dynamic row = AdminDataGrid.SelectedItem;
+            _row = row.ID;
         }
     }
 }

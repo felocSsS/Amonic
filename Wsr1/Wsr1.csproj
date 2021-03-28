@@ -98,6 +98,7 @@
     <Compile Include="BD\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Activity.cs" />
     <Compile Include="Classes\SupClass.cs" />
     <Compile Include="Classes\UserHelpClass.cs" />
     <Compile Include="User\PageUser.xaml.cs">
@@ -105,6 +106,9 @@
     </Compile>
     <Compile Include="Windows\WindowAddUser.xaml.cs">
       <DependentUpon>WindowAddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowsEditUser.xaml.cs">
+      <DependentUpon>WindowsEditUser.xaml</DependentUpon>
     </Compile>
     <Page Include="Login\PageLogin.xaml">
       <SubType>Designer</SubType>
@@ -141,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\WindowAddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\WindowsEditUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

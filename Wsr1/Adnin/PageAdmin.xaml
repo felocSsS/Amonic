@@ -58,7 +58,8 @@
                   CanUserSortColumns="False"
                   AutoGenerateColumns="False"
                   VerticalScrollBarVisibility="Auto"
-                  IsReadOnly="True">
+                  IsReadOnly="True"
+                  MouseDown="AdminDataGrid_MouseDown">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" 
                                     Width="70"
@@ -90,7 +91,8 @@
                     Style="{StaticResource btnNew}"
                     Background="DodgerBlue"
                     Width="150"
-                    Content="Change Role"/>
+                    Content="Change Role"
+                    Click="Button_Click"/>
             <Button Grid.Column="2"
                     Style="{StaticResource btnNew}"
                     Width="230"

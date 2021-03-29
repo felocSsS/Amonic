@@ -28,5 +28,10 @@ namespace Wsr1.Windows
         {
 
         }
+
+        private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

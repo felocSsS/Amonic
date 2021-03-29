@@ -8,6 +8,7 @@
         Title="WindowsEditUser" Height="450" Width="500"
         WindowStyle="None">
     <Grid>
-        
+        <TextBox Text="ggg"
+                 MouseDown="TextBox_MouseDown"/>
     </Grid>
 </Window>

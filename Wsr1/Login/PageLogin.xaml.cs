@@ -49,7 +49,7 @@ namespace Wsr1.Login
                         {
                             UserID = Info.ID,
                             Date = DateTime.Today,
-                            TimeLogin = DateTime.Now.TimeOfDay,
+                            TimeLogin = DateTime.Now.ToString("HH:mm:ss");
                         };
                         DB.database.Activity.Add(userTimeInfo);
                         DB.database.SaveChanges();
@@ -84,8 +84,7 @@ namespace Wsr1.Login
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }
-            
+            } 
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

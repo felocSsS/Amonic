@@ -98,7 +98,6 @@
     <Compile Include="BD\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Activity.cs" />
     <Compile Include="Classes\SupClass.cs" />
     <Compile Include="Classes\UserHelpClass.cs" />
     <Compile Include="User\PageUser.xaml.cs">

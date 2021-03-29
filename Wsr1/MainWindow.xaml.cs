@@ -33,18 +33,21 @@ namespace Wsr1
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            var Info = DB.database.Activity.FirstOrDefault(
+            if (UserHelpClass.userWasLoginIn)
+            {
+                var Info = DB.database.Activity.FirstOrDefault(
                         x => x.SessionID == UserHelpClass.sessionID);
-            Info.FeedBack = "kek";
-            try
-            {
-                DB.database.SaveChanges();
-                MessageBox.Show("Успех");
+                Info.TimeLogout = DateTime.Now.TimeOfDay;
+                try
+                {
+                    DB.database.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            this.Close();
         }
 
         private void Grid_MouseDown_1(object sender, MouseButtonEventArgs e)
